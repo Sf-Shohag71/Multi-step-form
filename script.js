@@ -12,18 +12,26 @@ if (currentStep < 0) {
 }
 
 multiStepForm.addEventListener("click", (e) => {
+  let incrementor;
   if (e.target.matches("[data-next]")) {
-    currentStep += 1;
+    incrementor = 1;
   } else if (e.target.matches("[data-previous]")) {
-    currentStep -= 1;
+    incrementor = -1;
   }
-  showCurrenStep();
+
+  if (incrementor == null) return;
+  const inputs = [...formSteps[currentStep].querySelectorAll("input")];
+  const allValid = inputs.every((input) => input.reportValidity());
+  console.log(allValid);
+  if (allValid) {
+    currentStep += incrementor;
+    showCurrenStep();
+  }
 });
 
-function showCurrenStep(){
+function showCurrenStep() {
   formSteps.forEach((step, index) => {
     step.classList.toggle("active", index === currentStep);
-    console.log(step, index);
+    // console.log(step, index);
   });
-  
-};
+}
