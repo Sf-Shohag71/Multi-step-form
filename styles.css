@@ -10,7 +10,11 @@
   padding: 0.5rem;
   max-width: 400px;
   margin: 20px auto;
-  display: none;
+  /* display: none; */
+  transform: translate(200%);
+  opacity: 0;
+  transition: 500ms ease-in-out;
+  position: absolute;
 }
 .card h1 {
   text-align: center;
@@ -46,5 +50,11 @@
   border: 1px solid #333;
 }
 .card.active {
-  display: block;
+  /* display: block; */
+  transform: translateX(0);
+  position: static;
+  opacity: 1;
+}
+.multi-step-form {
+  overflow: hidden;
 }
